@@ -1,0 +1,27 @@
+class Solution {
+public:
+    bool isValid(string word) {
+        int n=word.size();
+        bool num=false;
+        if(n<3) return false;
+        bool vow=false;
+        bool cons=false;
+        bool digits=false;
+        for(int i=0;i<n;i++){
+           char ch = tolower(word[i]); 
+            if(!(isdigit(ch)) && !(isalpha(ch))){
+                return false;
+            }
+            if(isalpha(ch)){
+            if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u'){
+                vow=true;
+
+            }
+             if(ch != 'a' && ch != 'e' && ch != 'i' && ch != 'o' && ch != 'u') {
+                cons=true;
+             }
+        }
+        }
+       return vow && cons  ;
+    }
+};
