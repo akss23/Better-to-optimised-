@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        if(s== "") return 0;
+        // or we can initialise cnt as zero so that whenever the length of the string is zero loop never runs and return zero as the answer
+        unordered_map<char,int> mpp;
+        int cnt=INT_MIN;
+        int l=0;
+        
+        for(int r=0;r<s.size();r++){
+             
+            if(mpp.find(s[r]) != mpp.end() && mpp[s[r]]>=l){
+                l=1+mpp[s[r]];
+               
+            }
+            mpp[s[r]]=r;
+            cnt=max(cnt,r-l+1);
+             
+            
+        }
+        return cnt;
+    }
+};
