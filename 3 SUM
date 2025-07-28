@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+       int n= nums.size();
+    //    vector<vector<int>> v;
+       set<vector<int>> st;
+       for(int i=0;i<n;i++){
+        set<int> mpp;
+        for(int j=i+1;j<n;j++){
+            int str=(-nums[i]-nums[j]);
+            if(mpp.find(str) != mpp.end()){
+                vector<int> temp={nums[i],nums[j],str};
+                sort(temp.begin(),temp.end());
+                st.insert(temp);
+            }
+            mpp.insert(nums[j]);
+        }
+       } 
+       vector<vector<int>> v(st.begin(),st.end());
+        return v;
+    }
+};
