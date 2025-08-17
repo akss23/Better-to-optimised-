@@ -1,0 +1,40 @@
+class Solution {
+public:
+    string reverseWords(string s) {
+        int n = s.size();
+
+        // Step 1: Remove extra spaces
+        string clean = "";
+        int i = 0;
+
+        // skip leading spaces
+        while (i < n && s[i] == ' ') i++;
+
+        while (i < n) {
+            // take a word
+            if (s[i] != ' ') {
+                clean += s[i];
+            } else {
+                // skip extra spaces
+                while (i < n && s[i] == ' ') i++;
+                if (i < n) clean += ' '; // put single space only
+                continue;
+            }
+            i++;
+        }
+
+        // Step 2: Reverse entire string
+        reverse(clean.begin(), clean.end());
+
+        // Step 3: Reverse each word
+        int start = 0, len = clean.size();
+        for (int j = 0; j <= len; j++) {
+            if (j == len || clean[j] == ' ') {
+                reverse(clean.begin() + start, clean.begin() + j);
+                start = j + 1;
+            }
+        }
+
+        return clean;
+    }
+};
