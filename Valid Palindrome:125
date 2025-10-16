@@ -1,0 +1,40 @@
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        int n=s.size();
+        
+        // string l;
+        // for(int i=0;i<n;i++){
+        //     if(!isalnum(s[i])) continue;
+        //     if(isupper(s[i])){
+        //         s[i]=tolower(s[i]);
+        //         l.push_back(s[i]);
+        //     }
+        //     else l.push_back(s[i]);
+        // }
+        // int newl=l.size();
+        // for(int i=0;i<newl/2;i++){
+        //     if(l[i] != l[newl-1-i]) return false;
+        // }
+        
+        // return true; the above is the brute force mthod to solve this , works fine issue is just that it aint working on O(1) space complexity
+
+        int i=0,j=n-1;
+        while(i<j){
+            if(!isalnum(s[i])) {
+                i++;
+                continue;// this is just to move it uptill alphanum that's why we used continue so that the loop does not follow further instructions untill i arrives at alphanumeric element
+            }
+            if(!isalnum(s[j])){
+                j--;
+                continue; // this is just to move it uptill alphanum that's why we used continue so that the loop does not follow further instructions untill j arrives at alphanumeric element
+            }
+            if(tolower(s[i]) != tolower(s[j])) {
+                return false;
+            }
+            i++;//these are the conditions that we've to follow anyways
+            j--;
+        }
+        return true;
+    }
+};
