@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        int r=ransomNote.size();
+        int m=magazine.size();
+        // for(int i=0;i<r;i++){
+        //     for(int j=0;j<m;j++){
+
+        //     }
+        // }
+        // map<char,int> mr;
+        // map<char,int> mm;
+        // for(int i=0;i<r;i++){
+        //     mr[ransomNote[i]]++;
+        // }
+        // for(int i=0;i<m;i++){
+        //     mm[magazine[i]]++;
+        // }
+        for(int i=0;i<r;i++){
+            auto it=find(magazine.begin(),magazine.end(),ransomNote[i]);//this is auto iterator that stores the place where element is found
+            if(it != magazine.end()){
+                magazine.erase(it);
+            }
+           else return false;
+        }
+return true;
+    }
+};
